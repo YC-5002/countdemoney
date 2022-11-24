@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Cindy Yang 
+        Section 86 
+        Odd Pd 7 & 8 
+        November 24, 2022
+        JavaScript Project 1 Count de Money-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <title>Count de Money</title>
+    <style>
+        body{
+            display: grid;
+            grid-template-rows: 15vh 30vh 25vh;
+            background-color: #f9f4dc;
+            font-family: 'Nanum Pen Script', cursive;
+            
+        }
+        header{
+            grid-area: 1 / 1 / span 1 /auto;
+            text-align: center;
+            font-size: 5vh;
+        }
+        .coins{
+            grid-area: 2 / 1 / span 3 / auto;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            font-size: 3vh;
+        }
+        .total{
+            grid-area: 5 / 1 / auto / auto;
+            text-align: center;
+            font-size: 3vh;
+        }
+        button{
+            background-color: #f8f4ed;
+            border: 1px solid #f9d367;
+            transition-duration: 0.4s;
+            border-radius: 5px;
+            color: black;
+            padding: 1vh 2vh;
+            margin-bottom: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 2vh;
+            font-family: 'Nanum Pen Script', cursive;
+        }
+        button:hover{
+            background-color: #f9d367;
+            color: white; 
+        }
+        .coins > div{
+            width: 15vw;
+            display:flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    </style>
+    <script>
+        function add(id){
+            number = document.getElementById(id);
+            number.innerHTML = parseInt(number.innerHTML) + 1; 
+            display();
+        }
+        function subtract(id){
+            number = document.getElementById(id);
+            if(parseInt(number.innerHTML) > 0){
+                number.innerHTML = parseInt(number.innerHTML) - 1;
+                display(); 
+            }
+        }
+        function display(){
+            penny = parseInt(document.getElementById("penny").innerHTML);
+            document.getElementById('penval').innerHTML = "$" + penny/100;
+            nickel =  parseInt(document.getElementById("nickel").innerHTML) * 5;
+            document.getElementById('nicval').innerHTML = "$" + nickel/100;
+            dime =  parseInt(document.getElementById("dime").innerHTML) * 10;
+            document.getElementById('dimval').innerHTML = "$" + dime/100;
+            quarter =  parseInt(document.getElementById("quarter").innerHTML) * 25;
+            document.getElementById('quartval').innerHTML = "$" + quarter/100;
+            sum = (penny + nickel + dime + quarter)/100;
+            total = document.getElementById("total");
+            total.innerHTML = "$" + sum;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Count de Money</h1>
+    </header>
+    <div class="coins">
+        <div>
+            <h3>Pennies</h3>
+            <p id="penny">0</p>
+            <p id="penval">$0.00</p>
+            <button onclick="add('penny');">Add</button>
+            <button onclick="subtract('penny');">Subtract</button>
+        </div>
+        <div>
+            <h3>Nickels</h3>
+            <p id="nickel">0</p>
+            <p id="nicval">$0.00</p>
+            <button onclick="add('nickel');">Add</button>
+            <button onclick="subtract('nickel');">Subtract</button>
+        </div>
+        <div>
+            <h3>Dimes</h3>
+            <p id="dime">0</p>
+            <p id="dimval">$0.00</p>
+            <button onclick="add('dime');">Add</button>
+            <button onclick="subtract('dime');">Subtract</button>
+        </div>
+        <div>
+            <h3>Quarters</h3>
+            <p id="quarter">0</p>
+            <p id="quartval">$0.00</p>
+            <button onclick="add('quarter');">Add</button>
+            <button onclick="subtract('quarter');">Subtract</button>
+        </div>
+    </div>
+    <div class="total">
+        <h2>Total Value: </h2>
+        <p id="total">$0.00</p>
+    </div>
+</body>
+</html>
